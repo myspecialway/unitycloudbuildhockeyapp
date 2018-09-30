@@ -8,7 +8,7 @@ const options = {
     unityCloudAPIKey: process.env.UNITYCLOUD_KEY,
     hockeyappId: process.env.HOCKEYAPPID,
     hockeyappAPIKey: process.env.HOCKEYAPP_KEY,
-    authorizationKey: process.env.AUTH_KEY,
+    authorizationKey: `Token ${process.env.AUTH_KEY}`,
     projectGuid: process.env.PROJECT_GUID
 };
 
@@ -173,7 +173,7 @@ function uploadToHockeyApp( filename ){
     form.append('status', 2);
     form.append('notes', "Automated release triggered from Unity Cloud Build.");
     form.append('notes_type', 0);
-    form.append('notify', 0);
+    form.append('notify', 1);
     form.append('ipa', readable);
 
     const req = form.submit({
